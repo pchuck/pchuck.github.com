@@ -5,27 +5,6 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     <meta content='Patrick Charles' name='author' />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://pchuck.com/rss"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      $(function() {
-        var limit = 8             // how many repos to list
-        var login = 'pchuck'      // your username
-
-        $.getJSON('http://github.com/api/v1/json/' + login + '?callback=?', function(data) {
-          var repos = $.grep(data.user.repositories, function(repo, i) {
-            return repo.description;
-          });
-
-          repos.sort(function(a, b) {
-            return b.watchers - a.watchers
-          });
-
-          $.each(repos.slice(0, limit), function() {
-            $('#repos').append('<li><a href="' + this.url + '">' + this.name + '</a> &mdash; ' + (this.fork ? '(<span class="fork">fork</span>) ' : '') + this.description + '</li>')
-          });
-        });
-      });
-    </script>
 
     <style media="screen" type="text/css">
       #logo {
@@ -55,7 +34,6 @@
 
       #root {
         text-align: center;
-      	height: 200px;
       }
 
       #footer .menu {
@@ -96,14 +74,30 @@
           <h1><span>pchuck (patrick charles) @ GitHub</span></h1>
         </div>
 
+        <div id='projects'>
+          <h3>Open Source Projects</h3>
+          <a href="http://github.com/pchuck/fractactor">fractactor</a> - scala fractal generator, utilizing actors, traits and mixins <br>
+          <a href="http://github.com/pchuck/jpcap">jpcap</a> - java network packet capture library <br>
+          <a href="http://github.com/pchuck/sshc">sshc</a> - command execution across clusters <br>
+          <h3>Data Science Work</h3>
+          <a href="https://github.com/pchuck/ProgrammingAssignment2/blob/master/cachematrix.R">Coursera, Programming in R, Assignment #2</a> <br>
+          <a href="https://github.com/pchuck/coursera-getdata-project/blob/master/run_analysis.R">Coursera, Getting and Cleaning Data, Course Project</a> <br>
+          <a href="https://github.com/pchuck/ExData_Plotting1">Coursera, Exploratory Data Analysis, Assignment #1</a> <br>
+          <a href="https://github.com/pchuck/RepData_PeerAssessment1">Coursera, Reproducible Research, Project #1</a> <br>
+          <a href="https://github.com/pchuck/RepData_PeerAssessment2">Coursera, Reproducible Research, Project #2</a> <br>
+          <a href="https://github.com/pchuck/coursera-rm-project">Coursera, Regression Models, Course Project</a> <br>
+          <a href="https://github.com/pchuck/coursera-ml-project">Coursera, Practical Machine Learning, Course Project</a> <br>
+        </div>
+        
         <div id="about" align='center'>
           <ul id='repos'></ul>
         </div>
 
     </div>
     <div id='footer' align='center'>
-          <a href='http://pchuck.net/'>blog</a> |
-          <a href='http://github.com/pchuck' class="active">projects</a>
+      <h3>Links</h3>
+      <a href='http://pchuck.net/'>blog</a> |
+      <a href='http://github.com/pchuck' class="active">repositories</a>
     </div>
   </body>
 </html>
